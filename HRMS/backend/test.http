@@ -1,0 +1,45 @@
+### LOGIN TEST (EMAIL)
+POST http://127.0.0.1:5000/auth/login
+Content-Type: application/json
+
+{
+  "login": "admin@test.com",
+  "password": "Test@123"
+}
+
+
+### CHECK CURRENT USER
+GET http://127.0.0.1:5000/protected/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc3MTQ5OTczMCwianRpIjoiODExYTg4NTMtYzFlMC00ZTJmLWE0ZDYtY2Q3ZDBlODUyODU4IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjIiLCJuYmYiOjE3NzE0OTk3MzAsImNzcmYiOiIyOGYxMTJjMy0xMjY4LTQ0YmItYWJiNS01YjI0Mzc4NWVlZTgiLCJleHAiOjE3NzE1MDA2MzAsImNvbXBhbnlfaWQiOjEsInJvbGVfaWQiOjF9.hQVCDx0pwQrSrfZ7ypigis1Ak3yI51X8xLRdnjcg3Dc
+
+
+### ENTER PAID DAYS
+POST http://127.0.0.1:5000/api/payroll/1/paid-days
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc3MTUwMDE2MywianRpIjoiMDBhYjc4ZGItODdkZi00MTI0LWI4MGQtOTM2YjVjNmM4OGYwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjIiLCJuYmYiOjE3NzE1MDAxNjMsImNzcmYiOiJlNDE1YmQ2My03NzAyLTQxY2YtYTBhNi01OWQxY2QxYzIwMzEiLCJleHAiOjE3NzE1MDEwNjMsImNvbXBhbnlfaWQiOjEsInJvbGVfaWQiOjF9.1tjsDUaJNqDebsvs7tAo7oZBoZo-8VPRvvVCadU3GSA
+Content-Type: application/json
+
+{
+  "employee_id": 1,
+  "payroll_year": 2026,
+  "payroll_month": 3,
+  "paid_days": 28.5
+}
+
+
+
+### GENERATE PAYROLL
+POST http://127.0.0.1:5000/api/payroll/1/generate
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc3MTUwMDE2MywianRpIjoiMDBhYjc4ZGItODdkZi00MTI0LWI4MGQtOTM2YjVjNmM4OGYwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjIiLCJuYmYiOjE3NzE1MDAxNjMsImNzcmYiOiJlNDE1YmQ2My03NzAyLTQxY2YtYTBhNi01OWQxY2QxYzIwMzEiLCJleHAiOjE3NzE1MDEwNjMsImNvbXBhbnlfaWQiOjEsInJvbGVfaWQiOjF9.1tjsDUaJNqDebsvs7tAo7oZBoZo-8VPRvvVCadU3GSA
+Content-Type: application/json
+
+{
+  "employee_id": 1,
+  "payroll_year": 2026,
+  "payroll_month": 3
+}
+
+
+
+### VIEW BREAKUP
+GET http://127.0.0.1:5000/api/payroll/1/breakup?employee_id=1&year=2026&month=3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc3MTUwMDE2MywianRpIjoiMDBhYjc4ZGItODdkZi00MTI0LWI4MGQtOTM2YjVjNmM4OGYwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjIiLCJuYmYiOjE3NzE1MDAxNjMsImNzcmYiOiJlNDE1YmQ2My03NzAyLTQxY2YtYTBhNi01OWQxY2QxYzIwMzEiLCJleHAiOjE3NzE1MDEwNjMsImNvbXBhbnlfaWQiOjEsInJvbGVfaWQiOjF9.1tjsDUaJNqDebsvs7tAo7oZBoZo-8VPRvvVCadU3GSA
